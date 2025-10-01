@@ -38,19 +38,18 @@ void displayStudents(const std::vector<Student>& database) {
 }
 
 //Подсчет среднего возраста
-void calculateAverageAge(const std::vector<Student>& database) {
+double calculateAverageAge(const std::vector<Student>& database) {
     if (database.empty()) {
-        std::cout << "База данных пуста. Средний возраст посчитать невозможно.\n";
-        return;
+        return 0.0; // явно возвращаем значение при пустой базе
     }
 
-    int sum = 0;
-    for (const Student& student : database) {
-        sum += student.age;
+    double sum = 0.0;
+    for (const auto& s : database) {
+        sum += s.age;
     }
-    double average = static_cast<double>(sum) / database.size();
 
-    std::cout << "Средний возраст студентов: " << average << "\n";
+    // последний return — обязательно возвращаем double
+    return sum / static_cast<double>(database.size());
 }
 
 
@@ -76,7 +75,7 @@ int main() {
                 displayStudents(database);
                 break;
             case 3:
-                calculateAverageAge(database);
+                std::cout << "Средний возраст студентов: " << calculateAverageAge(database) << "\n";
                 break;
             case 0:
                 std::cout << "Выход из программы.\n";
