@@ -44,7 +44,15 @@ void calculateAverageAge(const std::vector<Student>& database) {
         return;
     }
 
+    int sum = 0;
+    for (const Student& student : database) {
+        sum += student.age;
+    }
+    double average = static_cast<double>(sum) / database.size();
+
+    std::cout << "Средний возраст студентов: " << average << "\n";
 }
+
 
 int main() {
     setlocale(LC_ALL, "Russian");
