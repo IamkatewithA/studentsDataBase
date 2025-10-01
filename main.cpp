@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <locale>
 
 struct Student {
     std::string name;
@@ -36,7 +37,17 @@ void displayStudents(const std::vector<Student>& database) {
     }
 }
 
+//Подсчет среднего возраста
+void calculateAverageAge(const std::vector<Student>& database) {
+    if (database.empty()) {
+        std::cout << "База данных пуста. Средний возраст посчитать невозможно.\n";
+        return;
+    }
+
+}
+
 int main() {
+    setlocale(LC_ALL, "Russian");
     std::vector<Student> database;
 
     int choice;
